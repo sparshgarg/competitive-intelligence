@@ -9,6 +9,7 @@ import type {
   SignalSummary,
   Subgraph,
   Summary,
+  Scenario,
 } from "./types";
 
 async function getJson<T>(path: string): Promise<T> {
@@ -60,5 +61,8 @@ export const api = {
   competitorMap: () => getJson<NetworkPayload>("/api/network/competitor-map?k=2"),
   expandNode: (id: string) => getJson<NetworkPayload>(`/api/network/expand/${encodeURIComponent(id)}?k=2`),
   networkSearch: (q: string) => getJson<NetworkPayload>(`/api/network/search?q=${encodeURIComponent(q)}&k=2&limit=4`),
+
+  scenarios: () => getJson<Scenario[]>("/api/scenarios"),
+  strategyBrief: (body: { sliders: Record<string, number>; scenario_name: string }) => postJson<{ brief: string; provider: string }>("/api/strategy/brief", body),
 };
 

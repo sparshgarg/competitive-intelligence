@@ -1,10 +1,11 @@
-import { Bot, Gauge, Compass, Radio, Settings, Target, Trophy } from "lucide-react";
+import { Bot, Gauge, Compass, Radio, Settings, Target, Trophy, Swords } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import tempoLogo from "../assets/tempo-logo.png";
 import { ACCOUNTS, useAccount } from "../lib/accounts";
 
 const items = [
   { label: "Dashboard", href: "/", icon: Gauge },
+  { label: "War Room", href: "/war-room", icon: Swords },
   { label: "Market Atlas", href: "/network", icon: Compass },
   { label: "Initiatives", href: "/initiatives", icon: Target },
   { label: "Competitors", href: "/competitors", icon: Trophy },

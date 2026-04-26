@@ -1,0 +1,210 @@
+[
+  {
+    "id": "scenario-price-war",
+    "name": "Price War",
+    "quadrant": "top-left",
+    "description": "Chinese OEMs gain unrestricted EU access while EV demand booms — intense price competition compresses margins across the board.",
+    "responses": {
+      "defend": {
+        "headline": "Accelerate Epiq launch & lock fleet contracts",
+        "steps": [
+          "Pull Epiq SOP forward by 6 months to establish segment presence before BYD ramps",
+          "Offer 3-year total-cost-of-ownership guarantees to fleet customers",
+          "Increase marketing spend 20% on brand trust and local service advantage",
+          "Negotiate VW Group battery volume discounts to protect per-unit margin"
+        ],
+        "cost": 12000000,
+        "timeline": "6 months"
+      },
+      "attack": {
+        "headline": "Exploit BYD's EU service and brand gap",
+        "steps": [
+          "Launch 'Total Ownership' campaign emphasizing Skoda's 3,000-dealer EU network vs. BYD's 200",
+          "Offer free 5-year maintenance packages that Chinese brands can't match",
+          "Partner with leasing companies to bundle insurance + service + charging",
+          "Target BYD customers with aggressive trade-in programs after 12 months"
+        ],
+        "cost": 5000000,
+        "timeline": "3 months"
+      },
+      "partner": {
+        "headline": "Joint battery procurement across VW Group",
+        "steps": [
+          "Consolidate LFP cell sourcing with VW/Audi/Porsche for maximum volume leverage",
+          "Co-invest in European gigafactory (Salzgitter) to reduce dependency on CATL/BYD",
+          "Share MEB+ platform costs across 4 brands to achieve €8k/unit battery target",
+          "Explore Northvolt or SVOLT as alternative European cell suppliers"
+        ],
+        "cost": 25000000,
+        "timeline": "18 months"
+      },
+      "retreat": {
+        "headline": "Cede sub-€20k segment, focus on €25k-35k",
+        "steps": [
+          "Deprioritize Epiq if cost parity with BYD Seagull is unachievable",
+          "Reposition Skoda as 'smart value' rather than 'cheapest EV'",
+          "Redirect R&D budget from cost-down engineering to software UX differentiation",
+          "Accept 15-20% volume loss in entry segment, protect margin in core segment"
+        ],
+        "cost": 0,
+        "timeline": "12 months"
+      }
+    }
+  },
+  {
+    "id": "scenario-green-rush",
+    "name": "Green Rush",
+    "quadrant": "top-right",
+    "description": "EU tariffs block Chinese competition while EV demand surges — protected growth environment favors established European OEMs.",
+    "responses": {
+      "defend": {
+        "headline": "Scale EV portfolio rapidly within protected market",
+        "steps": [
+          "Maximize MEB platform output — target 500k BEV units/year by 2028",
+          "Secure long-term battery supply contracts at today's favorable pricing",
+          "Invest in charging infrastructure partnerships (Ionity, Electrify Europe)",
+          "Build out Skoda-branded home charging ecosystem"
+        ],
+        "cost": 18000000,
+        "timeline": "12 months"
+      },
+      "attack": {
+        "headline": "Capture market share from slower competitors",
+        "steps": [
+          "Aggressively price Peaq to steal Hyundai Ioniq 5 and Kia EV6 customers",
+          "Launch subscription model for younger buyers (25-35) who avoid ownership",
+          "Enter commercial vehicle segment with eTransporter platform sharing",
+          "Acquire or partner with a European autonomous driving startup"
+        ],
+        "cost": 15000000,
+        "timeline": "6 months"
+      },
+      "partner": {
+        "headline": "Deepen VW Group platform advantage",
+        "steps": [
+          "Advocate for SSP platform acceleration within the group",
+          "Joint investment in Cariad software reboot with Rivian tech",
+          "Collaborate with Seat/Cupra on shared manufacturing for Southern Europe",
+          "Explore white-label battery supply to smaller EU OEMs for revenue diversification"
+        ],
+        "cost": 30000000,
+        "timeline": "24 months"
+      },
+      "retreat": {
+        "headline": "No retreat needed — invest for growth",
+        "steps": [
+          "This is the most favorable scenario — retreat is not recommended",
+          "Instead, use windfall margin to build strategic reserves",
+          "Pre-invest in solid-state battery R&D for Horizon 3",
+          "Build brand equity that survives when tariffs eventually come down"
+        ],
+        "cost": 10000000,
+        "timeline": "Ongoing"
+      }
+    }
+  },
+  {
+    "id": "scenario-slow-burn",
+    "name": "Slow Burn",
+    "quadrant": "bottom-left",
+    "description": "Chinese competition is blocked but EV demand stalls — compliance costs mount while ICE revenue declines slowly. A war of attrition.",
+    "responses": {
+      "defend": {
+        "headline": "Optimize ICE profitability while managing compliance",
+        "steps": [
+          "Maximize contribution margin on remaining ICE/PHEV models",
+          "Lobby for Euro 7 timeline extensions through ACEA industry coalition",
+          "Reduce BEV capex burn rate — stretch Epiq launch if demand doesn't justify it",
+          "Implement aggressive cost-down programs across non-EV operations"
+        ],
+        "cost": 3000000,
+        "timeline": "6 months"
+      },
+      "attack": {
+        "headline": "Use compliance as competitive weapon",
+        "steps": [
+          "Achieve Euro 7 compliance faster than Dacia/Renault to gain temporary monopoly",
+          "Market Skoda as 'the responsible choice' to ESG-conscious fleet managers",
+          "Poach Dacia customers who lose access to non-compliant models",
+          "Build CSMS cyber compliance as a consulting service for smaller OEMs"
+        ],
+        "cost": 5000000,
+        "timeline": "9 months"
+      },
+      "partner": {
+        "headline": "Share compliance burden with VW Group",
+        "steps": [
+          "Pool CO2 credits across VW Group brands to minimize penalty exposure",
+          "Joint R&D on Euro 7 catalytic systems with Audi/Porsche",
+          "Shared CSMS platform with Seat to halve per-brand implementation cost",
+          "Explore regulatory sandbox partnerships with EU transport ministries"
+        ],
+        "cost": 8000000,
+        "timeline": "12 months"
+      },
+      "retreat": {
+        "headline": "Exit lowest-margin ICE segments early",
+        "steps": [
+          "Discontinue ICE variants that can't achieve Euro 7 compliance profitably",
+          "Consolidate production to 2-3 key plants, close underutilized facilities",
+          "Redirect freed-up capital to BEV ramp when demand recovers",
+          "Accept 10% volume decline to protect group-level margin targets"
+        ],
+        "cost": 0,
+        "timeline": "18 months"
+      }
+    }
+  },
+  {
+    "id": "scenario-perfect-storm",
+    "name": "Perfect Storm",
+    "quadrant": "bottom-right",
+    "description": "The worst case: Chinese competition floods the EU while EV demand stalls. Price pressure from above, compliance costs from below.",
+    "responses": {
+      "defend": {
+        "headline": "Survival mode — protect core revenue at all costs",
+        "steps": [
+          "Freeze all discretionary capex; redirect to cash preservation",
+          "Lock existing fleet contracts with multi-year extensions at reduced margin",
+          "Accelerate cost-down programs: target 15% reduction in fixed costs",
+          "Negotiate emergency supply chain flexibility with Tier 1 suppliers"
+        ],
+        "cost": 2000000,
+        "timeline": "3 months"
+      },
+      "attack": {
+        "headline": "Counter-position on trust and residual value",
+        "steps": [
+          "Launch guaranteed residual value program that Chinese brands can't offer",
+          "Emphasize data privacy and cybersecurity vs. Chinese-connected vehicles",
+          "Target fleet managers with 'total cost of disruption' analysis",
+          "Build referral programs leveraging Skoda's existing 8M+ customer base"
+        ],
+        "cost": 4000000,
+        "timeline": "6 months"
+      },
+      "partner": {
+        "headline": "Consolidate within VW Group for survival",
+        "steps": [
+          "Merge Skoda and Seat operations to eliminate duplicate overhead",
+          "Petition EU for emergency anti-dumping tariffs on Chinese EVs",
+          "Form industry consortium with Stellantis/Renault for shared compliance costs",
+          "Explore strategic investment from a non-automotive tech partner"
+        ],
+        "cost": 50000000,
+        "timeline": "24 months"
+      },
+      "retreat": {
+        "headline": "Strategic contraction to defensible segments",
+        "steps": [
+          "Exit all segments below €25k — cede to Chinese price leaders",
+          "Close 2 of 5 manufacturing plants; consolidate to Mladá Boleslav + Kvasiny",
+          "Reduce model lineup from 10 to 6 core vehicles",
+          "Redeploy freed capital to India/ASEAN where Skoda has growth runway"
+        ],
+        "cost": 0,
+        "timeline": "24 months"
+      }
+    }
+  }
+]

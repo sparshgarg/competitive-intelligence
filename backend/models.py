@@ -152,6 +152,11 @@ class Initiative(BaseModel):
     score_history: list[ScoreHistoryPoint] = Field(default_factory=list)
     required_capabilities: list[RequiredCapability] = Field(default_factory=list)
     risk_rationale: Optional[str] = None
+    # What-If simulation sensitivity coefficients (0.0 – 1.0)
+    price_sensitivity: float = 0.5
+    tariff_dampening: float = 0.3
+    demand_elasticity: float = 0.4
+    compliance_urgency: float = 0.2
 
 
 class Signal(BaseModel):

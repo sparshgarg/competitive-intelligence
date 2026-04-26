@@ -15,6 +15,7 @@ from api.initiatives import router as initiatives_router
 from api.network import router as network_router
 from api.recommendations import router as recommendations_router
 from api.signals import router as signals_router
+from api.strategy import router as strategy_router
 from graph_store import get_store
 from ingestion.rss_ingestor import fetch_rss_signals
 from scoring import bulk_recompute
@@ -41,6 +42,7 @@ app.include_router(initiatives_router, prefix="/api")
 app.include_router(signals_router, prefix="/api")
 app.include_router(recommendations_router, prefix="/api")
 app.include_router(network_router, prefix="/api")
+app.include_router(strategy_router, prefix="/api")
 
 
 @app.on_event("startup")

@@ -15,7 +15,11 @@
       { "capability_id": "cap-euro7-co2-compliance", "priority": "high" },
       { "capability_id": "cap-supply-chain-resilience", "priority": "high" },
       { "capability_id": "cap-fleet-tco-optimization", "priority": "med" }
-    ]
+    ],
+    "price_sensitivity": 0.1,
+    "tariff_dampening": 0.05,
+    "demand_elasticity": 0.2,
+    "compliance_urgency": 0.9
   },
   {
     "id": "init-ev-portfolio-doubling",
@@ -33,7 +37,11 @@
       { "capability_id": "cap-ev-platform-meb", "priority": "high" },
       { "capability_id": "cap-lfp-battery-supply", "priority": "high" },
       { "capability_id": "cap-supply-chain-resilience", "priority": "med" }
-    ]
+    ],
+    "price_sensitivity": 0.85,
+    "tariff_dampening": 0.7,
+    "demand_elasticity": 0.8,
+    "compliance_urgency": 0.2
   },
   {
     "id": "init-china-exit-redeploy",
@@ -50,7 +58,11 @@
     "required_capabilities": [
       { "capability_id": "cap-emerging-market-local", "priority": "high" },
       { "capability_id": "cap-supply-chain-resilience", "priority": "med" }
-    ]
+    ],
+    "price_sensitivity": 0.3,
+    "tariff_dampening": 0.15,
+    "demand_elasticity": 0.25,
+    "compliance_urgency": 0.1
   },
   {
     "id": "init-ux-product-house",
@@ -68,7 +80,11 @@
       { "capability_id": "cap-software-ux-infotainment", "priority": "high" },
       { "capability_id": "cap-ota-vehicle-lifecycle", "priority": "med" },
       { "capability_id": "cap-brand-simply-clever", "priority": "med" }
-    ]
+    ],
+    "price_sensitivity": 0.15,
+    "tariff_dampening": 0.1,
+    "demand_elasticity": 0.3,
+    "compliance_urgency": 0.15
   },
   {
     "id": "init-cyber-r155-csms",
@@ -85,6 +101,10 @@
     "required_capabilities": [
       { "capability_id": "cap-cybersecurity-r155", "priority": "high" },
       { "capability_id": "cap-supply-chain-resilience", "priority": "med" }
-    ]
+    ],
+    "price_sensitivity": 0.05,
+    "tariff_dampening": 0.0,
+    "demand_elasticity": 0.1,
+    "compliance_urgency": 0.85
   }
 ]

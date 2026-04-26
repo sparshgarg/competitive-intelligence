@@ -93,14 +93,39 @@ export interface Initiative {
   owner_name: string;
   budget: number;
   target_launch: string;
-  status: InitiativeStatus;
+  status: "active" | "at_risk" | "on_hold" | "completed" | "blocked";
   current_risk_score: number;
   prior_risk_score: number;
-  score_history: ScoreHistoryPoint[];
-  required_capabilities: RequiredCapability[];
+  score_history: { date: string; score: number }[];
+  required_capabilities: { capability_id: string; priority: "high" | "med" | "low" }[];
+  risk_rationale?: string;
+  _history_curve?: string;
+  price_sensitivity?: number;
+  tariff_dampening?: number;
+  demand_elasticity?: number;
+  compliance_urgency?: number;
   top_competitor?: { id: string; name: string; exposure_score?: number } | null;
   top_signals?: SignalSummary[];
-  risk_rationale?: string;
+}
+
+export interface StrategyResponse {
+  headline: string;
+  steps: string[];
+  cost: number;
+  timeline: string;
+}
+
+export interface Scenario {
+  id: string;
+  name: string;
+  quadrant: string;
+  description: string;
+  responses: {
+    defend: StrategyResponse;
+    attack: StrategyResponse;
+    partner: StrategyResponse;
+    retreat: StrategyResponse;
+  };
 }
 
 export interface GraphNode {
