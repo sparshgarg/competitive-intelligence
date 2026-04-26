@@ -1,0 +1,90 @@
+[
+  {
+    "id": "init-euro7-co2-compliance",
+    "name": "Euro 7 + CO₂ compliance program",
+    "owner_name": "Sarah Chen",
+    "budget": 6500000.0,
+    "target_launch": "Q1 2027",
+    "status": "at_risk",
+    "current_risk_score": 8.2,
+    "prior_risk_score": 6.4,
+    "score_history": [],
+    "risk_rationale": "Forces continued heavy R&D investment into legacy combustion engines to meet particulate and durability limits, severely draining capital needed for the EV transition.",
+    "_history_curve": "healthcare_inflection",
+    "required_capabilities": [
+      { "capability_id": "cap-euro7-co2-compliance", "priority": "high" },
+      { "capability_id": "cap-supply-chain-resilience", "priority": "high" },
+      { "capability_id": "cap-fleet-tco-optimization", "priority": "med" }
+    ]
+  },
+  {
+    "id": "init-ev-portfolio-doubling",
+    "name": "EV portfolio doubling (Epiq + Peaq rollout)",
+    "owner_name": "Raj Mehta",
+    "budget": 12000000.0,
+    "target_launch": "Q4 2026",
+    "status": "active",
+    "current_risk_score": 6.7,
+    "prior_risk_score": 6.0,
+    "score_history": [],
+    "risk_rationale": "Cooling European EV demand and intense Chinese price competition threaten the profitability of these critical sub-€25k entry-level models.",
+    "_history_curve": "oscillating",
+    "required_capabilities": [
+      { "capability_id": "cap-ev-platform-meb", "priority": "high" },
+      { "capability_id": "cap-lfp-battery-supply", "priority": "high" },
+      { "capability_id": "cap-supply-chain-resilience", "priority": "med" }
+    ]
+  },
+  {
+    "id": "init-china-exit-redeploy",
+    "name": "China exit + redeploy to India/ASEAN",
+    "owner_name": "Liam Park",
+    "budget": 4000000.0,
+    "target_launch": "Q2 2026",
+    "status": "active",
+    "current_risk_score": 5.8,
+    "prior_risk_score": 5.2,
+    "score_history": [],
+    "risk_rationale": "Exiting a massive historic profit pool forces rapid, highly complex localization in ASEAN and India. Failure to execute risks devastating volume loss against emerging market challengers.",
+    "_history_curve": "stable_low",
+    "required_capabilities": [
+      { "capability_id": "cap-emerging-market-local", "priority": "high" },
+      { "capability_id": "cap-supply-chain-resilience", "priority": "med" }
+    ]
+  },
+  {
+    "id": "init-ux-product-house",
+    "name": "UX Product House (in-cabin software turnaround)",
+    "owner_name": "Priya Iyer",
+    "budget": 5200000.0,
+    "target_launch": "Q3 2026",
+    "status": "active",
+    "current_risk_score": 6.1,
+    "prior_risk_score": 5.4,
+    "score_history": [],
+    "risk_rationale": "The failure of the internal 'single platform' OS has forced a chaotic pivot to external partners (Rivian/Xpeng), risking loss of tech autonomy and introducing massive software integration friction.",
+    "_history_curve": "oscillating",
+    "required_capabilities": [
+      { "capability_id": "cap-software-ux-infotainment", "priority": "high" },
+      { "capability_id": "cap-ota-vehicle-lifecycle", "priority": "med" },
+      { "capability_id": "cap-brand-simply-clever", "priority": "med" }
+    ]
+  },
+  {
+    "id": "init-cyber-r155-csms",
+    "name": "UNECE R155 CSMS compliance + cyber resilience",
+    "owner_name": "Tom Wagner",
+    "budget": 1800000.0,
+    "target_launch": "Q4 2026",
+    "status": "active",
+    "current_risk_score": 4.9,
+    "prior_risk_score": 4.6,
+    "score_history": [],
+    "risk_rationale": "Non-compliance risks immediate Loss of Vehicle Type Approval (sales ban). Retrofitting legacy E/E architectures to meet strict, mandatory cyber laws is proving notoriously difficult and expensive.",
+    "_history_curve": "stable_low",
+    "required_capabilities": [
+      { "capability_id": "cap-cybersecurity-r155", "priority": "high" },
+      { "capability_id": "cap-supply-chain-resilience", "priority": "med" }
+    ]
+  }
+]

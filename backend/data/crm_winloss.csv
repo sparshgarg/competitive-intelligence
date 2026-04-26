@@ -1,0 +1,21 @@
+deal_id,account,arr,stage,outcome,primary_competitor,loss_reason,close_date
+crm-aetna-2026q2,Aetna,1200000,closed-lost,loss,ServiceNow,Healthcare workflow gaps,2026-04-21
+crm-cigna-2026q2,Cigna,900000,stage-4,stalled,ServiceNow,Healthcare workflow depth,2026-04-15
+crm-jpmc-2026q2,JPMorgan Chase,2100000,closed-won,win,Planview,,2026-04-11
+crm-pfizer-2026q2,Pfizer Pipeline Ops,1800000,closed-lost,loss,Planisware,Vertical workflow incumbent depth,2026-04-03
+crm-natwest-2026q2,NatWest,1400000,stage-5,stalled,ServiceNow,Banking compliance pack readiness,2026-04-07
+crm-walmart-2026q1,Walmart Tech,3200000,closed-won,win,Asana,,2026-03-28
+crm-mayo-2026q1,Mayo Clinic,850000,closed-lost,loss,ServiceNow,Vertical workflow depth,2026-04-01
+crm-bcbs-2026q2,Blue Cross Blue Shield,1100000,stage-3,active,ServiceNow,,2026-04-22
+crm-citi-2026q2,Citi,1750000,stage-4,active,Planview,,2026-04-19
+crm-roche-2026q1,Roche R&D,2600000,closed-lost,loss,Planisware,Vertical workflow incumbent depth,2026-03-15
+crm-deltadental-2026q2,Delta Dental,640000,stage-3,active,ServiceNow,,2026-04-20
+crm-target-2026q1,Target,950000,closed-won,win,Atlassian,,2026-03-22
+crm-hsbc-2026q2,HSBC,2300000,stage-5,active,Planview,,2026-04-23
+crm-merck-2026q1,Merck Clinical Ops,1500000,closed-lost,loss,Planisware,Compliance frameworks depth,2026-03-25
+crm-cleveland-2026q2,Cleveland Clinic,720000,stage-2,active,ServiceNow,,2026-04-18
+crm-chevron-2026q1,Chevron,1400000,closed-won,win,Asana,,2026-03-12
+crm-anthem-2026q2,Anthem,1300000,closed-lost,loss,ServiceNow,Healthcare AI capabilities,2026-04-16
+crm-tdbank-2026q2,TD Bank,1100000,stage-3,active,ServiceNow,,2026-04-09
+crm-novartis-2026q1,Novartis Pipeline,1900000,closed-won,win,Planisware,,2026-03-20
+crm-ford-2026q1,Ford,800000,closed-lost,loss,Atlassian,Pricing flexibility,2026-04-02

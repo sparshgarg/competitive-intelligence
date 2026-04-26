@@ -1,0 +1,109 @@
+[
+  {
+    "id": "comp-tesla",
+    "name": "Tesla",
+    "segment": "EV / software-defined vehicle",
+    "momentum_score": 0.86,
+    "threat_level": "high",
+    "description": "Tesla sets the benchmark for software UX, OTA velocity, and perceived charging experience. It shapes customer expectations and compresses differentiation for VW-group brands.",
+    "capabilities": [
+      { "capability_id": "cap-software-ux-infotainment", "strength": 5, "trend": "rising" },
+      { "capability_id": "cap-ota-vehicle-lifecycle", "strength": 5, "trend": "rising" },
+      { "capability_id": "cap-fleet-tco-optimization", "strength": 4, "trend": "stable" }
+    ],
+    "last_updated": "2026-04-22T16:45:00+00:00",
+    "total_signals_30d": 10,
+    "deal_loss_exposure_q": 4200000.0
+  },
+  {
+    "id": "comp-byd",
+    "name": "BYD",
+    "segment": "EV cost leader",
+    "momentum_score": 0.9,
+    "threat_level": "high",
+    "description": "BYD drives price pressure with battery cost advantages and rapid platform iteration, especially impacting Europe’s budget segments and China competitive dynamics.",
+    "capabilities": [
+      { "capability_id": "cap-lfp-battery-supply", "strength": 5, "trend": "rising" },
+      { "capability_id": "cap-supply-chain-resilience", "strength": 5, "trend": "stable" },
+      { "capability_id": "cap-fleet-tco-optimization", "strength": 4, "trend": "rising" }
+    ],
+    "last_updated": "2026-04-21T07:10:00+00:00",
+    "total_signals_30d": 12,
+    "deal_loss_exposure_q": 3800000.0
+  },
+  {
+    "id": "comp-hyundai",
+    "name": "Hyundai",
+    "segment": "Mass-market OEM",
+    "momentum_score": 0.68,
+    "threat_level": "medium",
+    "description": "Hyundai executes consistently on EV platform rollout and value positioning, creating steady competitive pressure across mainstream segments.",
+    "capabilities": [
+      { "capability_id": "cap-ev-platform-meb", "strength": 3, "trend": "stable" },
+      { "capability_id": "cap-euro7-co2-compliance", "strength": 4, "trend": "stable" }
+    ],
+    "last_updated": "2026-04-10T10:00:00+00:00",
+    "total_signals_30d": 6,
+    "deal_loss_exposure_q": 1400000.0
+  },
+  {
+    "id": "comp-kia",
+    "name": "Kia",
+    "segment": "Mass-market OEM",
+    "momentum_score": 0.42,
+    "threat_level": "medium",
+    "description": "Kia mirrors Hyundai’s platform strategy with strong value propositions, pressuring the same customer cohorts as Škoda in Europe and emerging markets.",
+    "capabilities": [
+      { "capability_id": "cap-euro7-co2-compliance", "strength": 4, "trend": "stable" },
+      { "capability_id": "cap-fleet-tco-optimization", "strength": 3, "trend": "stable" }
+    ],
+    "last_updated": "2026-04-12T09:00:00+00:00",
+    "total_signals_30d": 5,
+    "deal_loss_exposure_q": 1100000.0
+  },
+  {
+    "id": "comp-dacia",
+    "name": "Dacia",
+    "segment": "Budget OEM",
+    "momentum_score": 0.18,
+    "threat_level": "low",
+    "description": "Dacia anchors the budget segment and intensifies price discipline, constraining Škoda’s ability to defend margins while scaling BEV share.",
+    "capabilities": [
+      { "capability_id": "cap-fleet-tco-optimization", "strength": 3, "trend": "stable" },
+      { "capability_id": "cap-supply-chain-resilience", "strength": 3, "trend": "stable" }
+    ],
+    "last_updated": "2026-04-05T11:15:00+00:00",
+    "total_signals_30d": 3,
+    "deal_loss_exposure_q": 650000.0
+  },
+  {
+    "id": "comp-volkswagen",
+    "name": "Volkswagen",
+    "segment": "VW Group core brand",
+    "momentum_score": 0.52,
+    "threat_level": "medium",
+    "description": "VW Group platform sharing creates internal differentiation pressure. Cross-brand steering improves execution but increases cannibalization risk across VW/Škoda/Cupra.",
+    "capabilities": [
+      { "capability_id": "cap-ev-platform-meb", "strength": 4, "trend": "stable" },
+      { "capability_id": "cap-software-ux-infotainment", "strength": 3, "trend": "stable" }
+    ],
+    "last_updated": "2026-03-25T09:08:00+00:00",
+    "total_signals_30d": 4,
+    "deal_loss_exposure_q": 1200000.0
+  },
+  {
+    "id": "comp-cupra",
+    "name": "Cupra",
+    "segment": "VW Group challenger brand",
+    "momentum_score": 0.72,
+    "threat_level": "low",
+    "description": "Cupra’s brand positioning competes for similar customers within the group; differentiation strategy matters more than raw platform capability.",
+    "capabilities": [
+      { "capability_id": "cap-brand-simply-clever", "strength": 3, "trend": "rising" },
+      { "capability_id": "cap-ev-platform-meb", "strength": 3, "trend": "stable" }
+    ],
+    "last_updated": "2026-03-25T09:08:00+00:00",
+    "total_signals_30d": 3,
+    "deal_loss_exposure_q": 500000.0
+  }
+]

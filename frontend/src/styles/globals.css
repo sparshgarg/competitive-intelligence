@@ -1,0 +1,109 @@
+@import url("https://rsms.me/inter/inter.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: linear-gradient(135deg, #f8f9fc 0%, #eef1f8 50%, #f5f3ff 100%);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+/* Premium glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.07),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  transform: translateY(-1px);
+}
+
+/* Elevated card — heavier depth */
+.elevated-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(229, 231, 235, 0.5);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 6px 20px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elevated-card:hover {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.05),
+    0 12px 32px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  transform: translateY(-2px);
+}
+
+/* Hero gradient band for urgency signals */
+.urgency-band {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  box-shadow:
+    0 2px 8px rgba(217, 119, 6, 0.08),
+    0 0 0 1px rgba(217, 119, 6, 0.06) inset;
+}
+
+/* AI glow for recommendation cards */
+.ai-glow {
+  background: linear-gradient(135deg, rgba(245, 243, 255, 0.9) 0%, rgba(255, 255, 255, 0.85) 100%);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  box-shadow:
+    0 2px 8px rgba(124, 58, 237, 0.06),
+    0 0 0 1px rgba(124, 58, 237, 0.04) inset;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ai-glow:hover {
+  border-color: rgba(124, 58, 237, 0.25);
+  box-shadow:
+    0 4px 16px rgba(124, 58, 237, 0.1),
+    0 0 0 1px rgba(124, 58, 237, 0.08) inset;
+  transform: translateY(-1px);
+}
+
+/* Score ring glow animation */
+@keyframes score-glow {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(217, 119, 6, 0.3)); }
+  50% { filter: drop-shadow(0 0 16px rgba(217, 119, 6, 0.5)); }
+}
+
+.score-glow {
+  animation: score-glow 2.5s ease-in-out infinite;
+}
+
+/* Smooth gradient divider */
+.gradient-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(229, 231, 235, 0.8), transparent);
+}

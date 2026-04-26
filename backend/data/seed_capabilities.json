@@ -1,0 +1,12 @@
+[
+  { "id": "cap-ev-platform-meb", "name": "Dedicated EV platform (MEB)", "category": "platform" },
+  { "id": "cap-lfp-battery-supply", "name": "LFP battery supply & cell-to-pack", "category": "platform" },
+  { "id": "cap-euro7-co2-compliance", "name": "Euro 7 + CO₂ fleet compliance", "category": "platform" },
+  { "id": "cap-software-ux-infotainment", "name": "In-vehicle software UX & infotainment", "category": "ux" },
+  { "id": "cap-cybersecurity-r155", "name": "Cybersecurity compliance (R155/CSMS)", "category": "platform" },
+  { "id": "cap-emerging-market-local", "name": "Emerging-market localization (India/ASEAN)", "category": "delivery" },
+  { "id": "cap-supply-chain-resilience", "name": "Supply chain resilience & cost control", "category": "delivery" },
+  { "id": "cap-fleet-tco-optimization", "name": "Fleet TCO optimization", "category": "intelligence" },
+  { "id": "cap-brand-simply-clever", "name": "Brand differentiation (Simply Clever UX)", "category": "ux" },
+  { "id": "cap-ota-vehicle-lifecycle", "name": "OTA + vehicle lifecycle software operations", "category": "platform" }
+]
