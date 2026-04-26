@@ -1,4 +1,4 @@
-"""Pydantic models for Competitive_OS entities.
+"""Pydantic models for Competitive Intelligence entities.
 
 Single source of truth for entity shapes on the backend. The TypeScript
 mirror lives at frontend/src/lib/types.ts and is kept in sync manually.

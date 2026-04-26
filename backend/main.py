@@ -19,7 +19,7 @@ from seed import derive_impacts, derive_threatens
 
 load_dotenv()
 
-app = FastAPI(title="Competitive_OS", version="0.1.0")
+app = FastAPI(title="Competitive Intelligence", version="0.1.0")
 
 cors_origins = [o.strip() for o in os.environ.get("CORS_ORIGINS", "").split(",") if o.strip()]
 if not cors_origins:

@@ -1,4 +1,4 @@
-## Competitive_OS demo script (Phase 6)
+## Competitive Intelligence demo script (Phase 6)
 
 This is a short, repeatable walkthrough you can run live in ~5 minutes.
 

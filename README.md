@@ -1,4 +1,4 @@
-# Competitive_OS
+# Competitive Intelligence
 
 A working prototype of Loop's Competitive Intelligence module for Tempo
 Software, built as a portfolio demo for a CI Product Manager pitch.

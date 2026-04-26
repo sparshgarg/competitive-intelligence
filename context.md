@@ -1,4 +1,4 @@
-# Competitive_OS — Project Context
+# Competitive Intelligence — Project Context
 
 > **Purpose of this file**: Persistent context for agents, AIs, and collaborators working on this project. Read this before touching any code.
 

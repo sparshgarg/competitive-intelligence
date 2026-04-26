@@ -19,7 +19,7 @@ function usePageMeta(): { title: string; breadcrumb?: string } {
   if (pathname.startsWith("/signals")) return { title: "Signals", breadcrumb: "Signals / Feed" };
   if (pathname.startsWith("/reasoning")) return { title: "Recommendations", breadcrumb: "AI / Recommendations" };
   if (pathname.startsWith("/network")) return { title: "Market Atlas", breadcrumb: "Landscape / Market Atlas" };
-  return { title: "Competitive OS" };
+  return { title: "Competitive Intelligence" };
 }
 
 export default function App() {
