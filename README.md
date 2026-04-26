@@ -52,6 +52,13 @@ npm run dev
 The frontend boots at http://localhost:5173 and proxies `/api/*` to the
 FastAPI backend on port 8000.
 
+## Troubleshooting
+
+**No “AI recommendations” on the dashboard:** Recommendations are stored in
+SQLite and created during `scoring.bulk_recompute` (on ingest/seed). If the DB
+is empty or stale, run `python seed.py` again from `competitive-os/backend` so
+pending recommendations are (re)generated.
+
 ## Verification
 
 After `python seed.py`, the sanity report should look like:

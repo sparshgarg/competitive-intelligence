@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from graph_store import EdgeType, GraphStore
-from models import NodeType, RecommendationStatus
+from models import NodeType
 from synthesis.recommendations import generate_recommendation
 
 SOURCE_AUTHORITY = {
@@ -134,7 +134,10 @@ def bulk_recompute(store: GraphStore) -> dict[str, Any]:
         updated.append(node_id)
 
         delta = new_score - prior
-        if abs(delta) > 1.5:
+        # Triggers a recommendation on any material rescore move. (Large threshold
+        # like 1.5 often never fires after the graph stabilizes, leaving the UI
+        # with no pending recommendations.)
+        if abs(delta) > 0.35:
             try:
                 rec = generate_recommendation(node_id, delta, store)
                 if rec:

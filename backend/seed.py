@@ -31,10 +31,12 @@ from models import (
     Capability,
     Competitor,
     Initiative,
+    RecommendationStatus,
     ScoreHistoryPoint,
     Signal,
 )
 from scoring import bulk_recompute
+from synthesis.recommendations import generate_recommendation
 
 DATA = Path(__file__).parent / "data"
 TODAY = datetime(2026, 4, 24, tzinfo=timezone.utc)
@@ -301,6 +303,36 @@ def print_summary(store: GraphStore) -> None:
     )
 
 
+# ---------- ensure pending AI recs (demo) ---------------------------------
+
+
+def ensure_pending_recommendations(store: GraphStore, minimum: int = 3) -> list[str]:
+    """If recompute did not create enough pending recommendations, add fallbacks for the top initiatives by risk.
+
+    A strict delta-only trigger often produced zero rows once scores stabilized, so the dashboard was empty.
+    """
+    pending = store.list_recommendations(RecommendationStatus.PENDING)
+    if len(pending) >= minimum:
+        return []
+    covered = {r.affected_initiative_id for r in pending}
+    rows: list[tuple[str, float]] = []
+    for node_id, attrs in store.graph.nodes(data=True):
+        if attrs.get("type") != NodeType.INITIATIVE.value:
+            continue
+        if node_id in covered:
+            continue
+        rows.append((node_id, float(attrs.get("current_risk_score", 0.0))))
+    rows.sort(key=lambda t: t[1], reverse=True)
+    created: list[str] = []
+    for node_id, _ in rows:
+        if len(pending) + len(created) >= minimum:
+            break
+        rec = generate_recommendation(node_id, 1.2, store)
+        if rec:
+            created.append(rec.id)
+    return created
+
+
 # ---------- main ----------------------------------------------------------
 
 def main() -> None:
@@ -312,12 +344,15 @@ def main() -> None:
     threatens = derive_threatens(store)
     impacts = derive_impacts(store)
     recompute = bulk_recompute(store)
+    extra = ensure_pending_recommendations(store, minimum=3)
     store.snapshot()
 
     print(f"Loaded: {counts}")
     print(f"Derived edges: THREATENS={threatens}  IMPACTS={impacts}")
     if recompute.get("recommendations_generated"):
         print(f"Generated recommendations: {recompute['recommendations_generated']}")
+    if extra:
+        print(f"Ensured additional recommendations: {extra}")
     print_summary(store)
 
 
