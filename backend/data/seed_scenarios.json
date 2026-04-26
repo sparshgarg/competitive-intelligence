@@ -2,7 +2,7 @@
   {
     "id": "scenario-price-war",
     "name": "Price War",
-    "quadrant": "top-left",
+    "quadrant": "top-right",
     "description": "Chinese OEMs gain unrestricted EU access while EV demand booms — intense price competition compresses margins across the board.",
     "responses": {
       "defend": {
@@ -53,9 +53,9 @@
   },
   {
     "id": "scenario-green-rush",
-    "name": "Green Rush",
-    "quadrant": "top-right",
-    "description": "EU tariffs block Chinese competition while EV demand surges — protected growth environment favors established European OEMs.",
+    "name": "Fortress Europe",
+    "quadrant": "top-left",
+    "description": "Chinese OEM access is constrained while EV demand surges — a protected growth window for European OEMs to scale profitably.",
     "responses": {
       "defend": {
         "headline": "Scale EV portfolio rapidly within protected market",

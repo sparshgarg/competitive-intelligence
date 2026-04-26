@@ -19,19 +19,18 @@ export function WhatIfSimulator({ sliders, setSliders }: WhatIfSimulatorProps) {
   };
 
   return (
-    <Card className="p-5 h-full">
+    <Card className="p-5 glass-card h-full">
       <h3 className="font-semibold text-lg mb-4 text-ink">What-If Simulator</h3>
-      <p className="text-xs text-ink-muted mb-6">
-        Note: Current sensitivities are based on true probability derived from internal CRM data, 
-        analyst reports, and supply chain intelligence.
+      <p className="text-xs text-ink-2 mb-6">
+        Drag a lever to see immediate exposure deltas across the initiative portfolio.
       </p>
 
       <div className="space-y-5">
         {PARAMETERS.map((param) => (
           <div key={param.id}>
             <div className="flex justify-between text-sm mb-2">
-              <span className="text-ink-muted">{param.label}</span>
-              <span className="font-medium bg-surface-hover px-2 py-0.5 rounded text-xs">
+              <span className="text-ink-2">{param.label}</span>
+              <span className="font-medium bg-surface-2 px-2 py-0.5 rounded text-xs ring-1 ring-border">
                 {param.format(sliders[param.id] ?? 0)}
               </span>
             </div>
@@ -41,7 +40,7 @@ export function WhatIfSimulator({ sliders, setSliders }: WhatIfSimulatorProps) {
               max={param.max}
               value={sliders[param.id] ?? 0}
               onChange={(e) => handleChange(param.id, Number(e.target.value))}
-              className="w-full h-1.5 bg-surface-border rounded-lg appearance-none cursor-pointer accent-ink"
+              className="w-full h-1.5 bg-border rounded-lg appearance-none cursor-pointer accent-navy"
             />
           </div>
         ))}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Sparkles, RefreshCw } from "lucide-react";
 import { Card } from "../Card";
 import { api } from "../../lib/api";
@@ -11,8 +11,28 @@ interface StrategicBriefProps {
 
 export function StrategicBrief({ sliders, scenarioName }: StrategicBriefProps) {
   const [brief, setBrief] = useState<string | null>(null);
+  const [rendered, setRendered] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const typingSource = useMemo(() => brief ?? null, [brief]);
+
+  useEffect(() => {
+    if (!typingSource) {
+      setRendered(null);
+      return;
+    }
+    setRendered("");
+    let i = 0;
+    const step = () => {
+      i = Math.min(typingSource.length, i + 6);
+      setRendered(typingSource.slice(0, i));
+      if (i >= typingSource.length) return;
+      window.setTimeout(step, 12);
+    };
+    const t = window.setTimeout(step, 80);
+    return () => window.clearTimeout(t);
+  }, [typingSource]);
 
   const generateBrief = async () => {
     setLoading(true);
@@ -54,9 +74,9 @@ export function StrategicBrief({ sliders, scenarioName }: StrategicBriefProps) {
           <div className="text-red-500 p-4 bg-red-50/50 rounded-md border border-red-100">
             {error}
           </div>
-        ) : brief ? (
+        ) : rendered ? (
           <div className="prose prose-sm prose-slate max-w-none">
-            <ReactMarkdown>{brief}</ReactMarkdown>
+            <ReactMarkdown>{rendered}</ReactMarkdown>
           </div>
         ) : (
           <div className="text-ink-muted flex items-center justify-center h-full border-2 border-dashed border-surface-border rounded-lg py-8">

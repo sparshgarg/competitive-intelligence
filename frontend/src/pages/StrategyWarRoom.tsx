@@ -1,5 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
-import { TopBar } from "../components/TopBar";
+import { useEffect, useMemo, useState } from "react";
 import { ScenarioPlanner } from "../components/war-room/ScenarioPlanner";
 import { WhatIfSimulator } from "../components/war-room/WhatIfSimulator";
 import { ResponsePlaybook } from "../components/war-room/ResponsePlaybook";
@@ -47,13 +46,15 @@ export function StrategyWarRoom() {
   // Determine active scenario based on quadrant
   const activeScenario = useMemo(() => {
     if (scenarios.length === 0) return null;
-    
+
     const isHighAccess = chineseAccess >= 50;
     const isHighAdoption = evAdoption >= 50;
 
     let targetQuadrant = "";
-    if (isHighAccess && isHighAdoption) targetQuadrant = "top-left"; // Price War (Chinese enter + EV booms)
-    else if (!isHighAccess && isHighAdoption) targetQuadrant = "top-right"; // Green Rush (Chinese blocked + EV booms)
+    // X-axis: Chinese OEM EU market access (left=blocked, right=unrestricted)
+    // Y-axis: EU BEV adoption (top=accelerating, bottom=stalled)
+    if (isHighAccess && isHighAdoption) targetQuadrant = "top-right"; // Price War
+    else if (!isHighAccess && isHighAdoption) targetQuadrant = "top-left"; // Fortress Europe
     else if (!isHighAccess && !isHighAdoption) targetQuadrant = "bottom-left"; // Slow Burn (Chinese blocked + EV stalls)
     else targetQuadrant = "bottom-right"; // Perfect Storm (Chinese enter + EV stalls)
 
@@ -61,46 +62,40 @@ export function StrategyWarRoom() {
   }, [chineseAccess, evAdoption, scenarios]);
 
   if (loading) {
-    return (
-      <div className="flex-1 flex flex-col min-h-screen">
-        <TopBar title="Strategy War Room" breadcrumb="Strategy / War Room" />
-        <div className="flex-1 p-8 flex items-center justify-center text-ink-muted">Loading War Room...</div>
-      </div>
-    );
+    return <div className="rounded border border-border bg-surface p-6 text-sm text-ink-2">Loading War Room…</div>;
   }
 
   return (
-    <div className="flex-1 flex flex-col min-h-screen">
-      <TopBar title="Strategy War Room" breadcrumb="Strategy / War Room" />
-      
-      <main className="flex-1 p-8 max-w-7xl mx-auto w-full">
-        <header className="mb-8">
-          <h1 className="text-2xl font-bold tracking-tight text-ink">Strategy War Room</h1>
-          <p className="text-ink-muted mt-1">Interactive scenario planning & response recommendations</p>
-        </header>
+    <div className="animate-fade-in">
+      <header className="mb-6">
+        <div className="text-xs font-semibold uppercase tracking-wide text-ink-3">Strategy</div>
+        <h1 className="mt-1 text-2xl font-semibold text-ink">What‑If Analysis</h1>
+        <p className="mt-1 text-sm text-ink-2">
+          Scenario planning + what-if simulation + response playbooks, with an AI executive brief on demand.
+        </p>
+      </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
-          {/* Left Column (60%) */}
-          <div className="lg:col-span-7 space-y-6">
-            <ScenarioPlanner 
-              evAdoption={evAdoption} 
-              setEvAdoption={setEvAdoption}
-              chineseAccess={chineseAccess}
-              setChineseAccess={setChineseAccess}
-            />
-            <WhatIfSimulator sliders={sliders} setSliders={setSliders} />
-          </div>
-
-          {/* Right Column (40%) */}
-          <div className="lg:col-span-5 space-y-6">
-            <ResponsePlaybook scenario={activeScenario} />
-            <PortfolioImpact initiatives={initiatives} sliders={sliders} />
-          </div>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <div className="space-y-6 lg:col-span-7">
+          <ScenarioPlanner
+            evAdoption={evAdoption}
+            setEvAdoption={setEvAdoption}
+            chineseAccess={chineseAccess}
+            setChineseAccess={setChineseAccess}
+            activeQuadrant={activeScenario?.quadrant ?? null}
+          />
+          <WhatIfSimulator sliders={sliders} setSliders={setSliders} />
         </div>
 
-        {/* Bottom Full Width */}
+        <div className="space-y-6 lg:col-span-5">
+          <ResponsePlaybook scenario={activeScenario} />
+          <PortfolioImpact initiatives={initiatives} sliders={sliders} />
+        </div>
+      </div>
+
+      <div className="mt-6">
         <StrategicBrief sliders={sliders} scenarioName={activeScenario?.name || "Custom"} />
-      </main>
+      </div>
     </div>
   );
 }

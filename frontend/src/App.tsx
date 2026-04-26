@@ -10,7 +10,6 @@ import { Signals } from "./pages/Signals";
 import { SignalDetail } from "./pages/SignalDetail";
 import { Reasoning } from "./pages/Reasoning";
 import { MarketAtlas } from "./pages/MarketAtlas";
-import { StrategyWarRoom } from "./pages/StrategyWarRoom";
 
 function usePageMeta(): { title: string; breadcrumb?: string } {
   const { pathname } = useLocation();
@@ -19,7 +18,6 @@ function usePageMeta(): { title: string; breadcrumb?: string } {
   if (pathname.startsWith("/competitors")) return { title: "Competitors", breadcrumb: "Landscape / Competitors" };
   if (pathname.startsWith("/signals")) return { title: "Signals", breadcrumb: "Signals / Feed" };
   if (pathname.startsWith("/reasoning")) return { title: "Recommendations", breadcrumb: "AI / Recommendations" };
-  if (pathname.startsWith("/war-room")) return { title: "Strategy War Room", breadcrumb: "Strategy / War Room" };
   if (pathname.startsWith("/network")) return { title: "Market Atlas", breadcrumb: "Landscape / Market Atlas" };
   return { title: "Competitive Intelligence" };
 }
@@ -42,7 +40,7 @@ export default function App() {
             <Route path="/signals/:signalId" element={<SignalDetail />} />
             <Route path="/reasoning" element={<Reasoning />} />
             <Route path="/network" element={<MarketAtlas />} />
-            <Route path="/war-room" element={<StrategyWarRoom />} />
+            <Route path="/war-room" element={<Navigate to="/" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

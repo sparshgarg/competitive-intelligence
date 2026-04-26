@@ -1,11 +1,10 @@
-import { Bot, Gauge, Compass, Radio, Settings, Target, Trophy, Swords } from "lucide-react";
+import { Bot, Gauge, Compass, Radio, Settings, Target, Trophy } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import tempoLogo from "../assets/tempo-logo.png";
 import { ACCOUNTS, useAccount } from "../lib/accounts";
 
 const items = [
   { label: "Dashboard", href: "/", icon: Gauge },
-  { label: "War Room", href: "/war-room", icon: Swords },
   { label: "Market Atlas", href: "/network", icon: Compass },
   { label: "Initiatives", href: "/initiatives", icon: Target },
   { label: "Competitors", href: "/competitors", icon: Trophy },
@@ -54,19 +53,21 @@ export function Sidebar() {
           </div>
         </div>
 
-        <div className="mt-2 flex gap-2">
-          {ACCOUNTS.map((a) => (
-            <button
-              key={a.id}
-              onClick={() => setAccountId(a.id)}
-              className={`flex-1 rounded px-2 py-1 text-[11px] font-semibold ring-1 ring-border transition ${
-                a.id === account.id ? "bg-ai-active text-ai-active-text" : "bg-surface text-ink-2 hover:bg-surface-2"
-              }`}
-            >
-              {a.initials}
-            </button>
-          ))}
-        </div>
+        {ACCOUNTS.length > 1 ? (
+          <div className="mt-2 flex gap-2">
+            {ACCOUNTS.map((a) => (
+              <button
+                key={a.id}
+                onClick={() => setAccountId(a.id)}
+                className={`flex-1 rounded px-2 py-1 text-[11px] font-semibold ring-1 ring-border transition ${
+                  a.id === account.id ? "bg-ai-active text-ai-active-text" : "bg-surface text-ink-2 hover:bg-surface-2"
+                }`}
+              >
+                {a.initials}
+              </button>
+            ))}
+          </div>
+        ) : null}
       </div>
     </aside>
   );

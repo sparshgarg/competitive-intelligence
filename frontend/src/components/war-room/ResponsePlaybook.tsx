@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useState } from "react";
 import { ChevronDown, ChevronRight, Shield, Swords, Handshake, CornerUpLeft } from "lucide-react";
 import { Card } from "../Card";
@@ -18,7 +19,7 @@ export function ResponsePlaybook({ scenario }: ResponsePlaybookProps) {
     );
   }
 
-  const renderCard = (type: "defend" | "attack" | "partner" | "retreat", data: StrategyResponse, icon: React.ReactNode, colorClass: string) => {
+  const renderCard = (type: "defend" | "attack" | "partner" | "retreat", data: StrategyResponse, icon: ReactNode, colorClass: string) => {
     const isExpanded = expanded === type;
     
     return (
@@ -68,10 +69,10 @@ export function ResponsePlaybook({ scenario }: ResponsePlaybookProps) {
   };
 
   return (
-    <Card className="p-5 h-full">
+    <Card className="p-5 glass-card h-full">
       <div className="mb-4">
         <h3 className="font-semibold text-lg text-ink">Response Playbook</h3>
-        <p className="text-xs text-ink-muted">Active: <strong className="text-ink">{scenario.name}</strong></p>
+        <p className="text-xs text-ink-2">Active: <strong className="text-ink">{scenario.name}</strong></p>
       </div>
       
       <div className="space-y-3">

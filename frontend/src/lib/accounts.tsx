@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-export type AccountId = "cso_sarah" | "ceo_vic";
+export type AccountId = "cso_sarah";
 
 export type Account = {
   id: AccountId;
@@ -11,7 +11,6 @@ export type Account = {
 
 export const ACCOUNTS: Account[] = [
   { id: "cso_sarah", name: "Sarah Chen", title: "Chief Strategy Officer", initials: "SC" },
-  { id: "ceo_vic", name: "Vic Chynoweth", title: "Chief Executive Officer", initials: "VC" },
 ];
 
 type AccountContextValue = {
@@ -28,7 +27,7 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY) as AccountId | null;
-      if (stored === "cso_sarah" || stored === "ceo_vic") setAccountId(stored);
+      if (stored === "cso_sarah") setAccountId(stored);
     } catch {
       // ignore
     }
