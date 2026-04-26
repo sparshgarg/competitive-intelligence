@@ -5,7 +5,7 @@ import hashlib
 import json
 from typing import Any
 
-from rapidfuzz import fuzz
+from thefuzz import fuzz
 
 from ai_client import ai_cache_namespace, ai_chat, ai_enabled
 from graph_store import GraphStore

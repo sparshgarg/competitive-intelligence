@@ -1,0 +1,2 @@
+# Root-level requirements for Render deployment
+# Actual deps are in backend/requirements.txt and installed by build.sh
