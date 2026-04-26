@@ -75,7 +75,7 @@ export function CsoDashboard() {
 
       {/* Strategic exposure + Recommendations */}
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.2fr_0.8fr] animate-slide-up [animation-delay:450ms]">
-        <Card title="Strategic exposure" subtitle="Plain-English reason each initiative moved. Click through for multi-hop trace evidence." variant="elevated">
+        <Card title="Strategic exposure" variant="elevated">
           <div>
             {topInitiatives.map((i) => (
               <ExposureRow

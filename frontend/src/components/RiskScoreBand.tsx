@@ -50,7 +50,7 @@ export function RiskScoreBand({
           </div>
           <div className="mt-3 text-lg font-bold text-ink leading-snug">{title}</div>
           
-          <div className="mt-5 flex items-center gap-6">
+          <div className="mt-5 flex flex-wrap items-center gap-6">
             {/* Circular Score Gauge */}
             <div className="relative flex h-[130px] w-[130px] items-center justify-center shrink-0">
               <svg className="absolute inset-0 -rotate-90" viewBox="0 0 120 120">
@@ -75,16 +75,14 @@ export function RiskScoreBand({
               </div>
             </div>
 
-            <div className="flex-1 space-y-3">
-              <div className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold ${delta >= 0 ? "bg-amber-bg/60 text-amber" : "bg-teal-bg/60 text-teal"}`}>
-                {delta >= 0 ? <TrendingUp className="h-3.5 w-3.5" /> : <TrendingDown className="h-3.5 w-3.5" />}
-                {delta >= 0 ? "+" : ""}{delta.toFixed(1)} risk delta
-              </div>
-              <p className="text-sm leading-relaxed text-ink-2">
-                This score combines recent market signals, source authority, recency decay, and graph proximity. A high score means the CSO should decide whether to reallocate attention or budget now.
-              </p>
+            <div className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold ${delta >= 0 ? "bg-amber-bg/60 text-amber" : "bg-teal-bg/60 text-teal"}`}>
+              {delta >= 0 ? <TrendingUp className="h-3.5 w-3.5" /> : <TrendingDown className="h-3.5 w-3.5" />}
+              {delta >= 0 ? "+" : ""}{delta.toFixed(1)} risk delta
             </div>
           </div>
+          <p className="mt-4 w-full text-sm leading-relaxed text-ink-2">
+            This score combines recent market signals, source authority, recency decay, and graph proximity. When it is high, you should decide whether to reallocate your attention or budget here now.
+          </p>
         </div>
 
         <div className="rounded-xl border border-border/50 bg-white/50 backdrop-blur-sm p-4 shadow-glass">
