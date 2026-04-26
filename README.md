@@ -1,9 +1,9 @@
 # Competitive Intelligence
 
-A working prototype of Loop's Competitive Intelligence module for Tempo
-Software, built as a portfolio demo for a CI Product Manager pitch.
+A working prototype of a Competitive Intelligence module for Tempo
+Software.
 
-The thesis the prototype demonstrates end-to-end:
+The thesis prototype demonstrates end-to-end:
 
 1. Heterogeneous market signals — news, analyst content, CRM win/loss data,
    CPQ pricing patterns, and social/G2 reviews — are ingested into a
