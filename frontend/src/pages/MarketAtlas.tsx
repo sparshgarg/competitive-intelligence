@@ -7,6 +7,14 @@ import { Bot, Maximize, Search, Activity } from "lucide-react";
 
 type NodeTypeFilter = "competitor" | "initiative" | "capability" | "signal" | "recommendation";
 
+const NODE_TYPE_STYLES: Record<NodeTypeFilter, { dot: string; active: string }> = {
+  competitor: { dot: "bg-navy", active: "bg-blue-50 text-navy ring-1 ring-navy/25" },
+  initiative: { dot: "bg-ai", active: "bg-ai-bg text-ai ring-1 ring-ai/25" },
+  signal: { dot: "bg-navy-2", active: "bg-blue-50 text-src-news ring-1 ring-src-news/25" },
+  recommendation: { dot: "bg-teal", active: "bg-teal-bg text-teal ring-1 ring-teal/25" },
+  capability: { dot: "bg-amber", active: "bg-amber-bg text-amber ring-1 ring-amber/25" },
+};
+
 function daysToLabel(days: number) {
   if (days <= 7) return "Last 7 days";
   if (days <= 14) return "Last 14 days";
@@ -59,13 +67,18 @@ export function MarketAtlas() {
   const data = graphPayload ?? network.data;
 
   const filtered = useMemo(() => {
-    let nodes = (data?.nodes ?? []).filter((n) => Boolean(enabledTypes[n.type as NodeTypeFilter]));
-    let edges = data?.edges ?? [];
+    const nodeById = new Map((data?.nodes ?? []).map((node) => [node.id, node]));
+    const enabledNodeIds = new Set(
+      (data?.nodes ?? [])
+        .filter((n) => Boolean(enabledTypes[n.type as NodeTypeFilter]))
+        .map((n) => n.id)
+    );
+    let edges = (data?.edges ?? []).filter((e) => enabledNodeIds.has(e.src) && enabledNodeIds.has(e.dst));
 
-    const nodeSet = new Set(nodes.map((n) => n.id));
     const signalFresh = new Set(
-      nodes
+      (data?.nodes ?? [])
         .filter((n) => n.type === "signal" && typeof n.published_at === "string")
+        .filter((n) => enabledNodeIds.has(n.id))
         .filter((n) => {
           const t = Date.parse(n.published_at ?? "");
           return Number.isFinite(t) ? t >= cutoff : true;
@@ -74,29 +87,48 @@ export function MarketAtlas() {
     );
     
     edges = edges.filter((e) => {
-      if (!nodeSet.has(e.src) || !nodeSet.has(e.dst)) return false;
       if (e.edge_type === "MENTIONS" || e.edge_type === "IMPACTS") return signalFresh.has(e.src);
       return true;
     });
 
+    let visibleNodeIds = new Set<string>();
+    for (const edge of edges) {
+      visibleNodeIds.add(edge.src);
+      visibleNodeIds.add(edge.dst);
+    }
+
     if (focusedCompetitors.size > 0) {
       const allowedCompIds = new Set(focusedCompetitors);
-      const compEdges = edges.filter(e => allowedCompIds.has(e.src) || allowedCompIds.has(e.dst));
-      
-      const connectedNodeIds = new Set<string>();
-      for (const e of compEdges) {
-        connectedNodeIds.add(e.src);
-        connectedNodeIds.add(e.dst);
+
+      // Keep a compact 3-hop undirected neighborhood around focused competitors.
+      // This makes signal/recommendation toggles visible: those nodes are often
+      // connected through capabilities or initiatives, not directly to competitors.
+      visibleNodeIds = new Set([...allowedCompIds].filter((id) => enabledNodeIds.has(id)));
+      for (let hop = 0; hop < 3; hop += 1) {
+        const next = new Set(visibleNodeIds);
+        for (const edge of edges) {
+          const srcNode = nodeById.get(edge.src);
+          const dstNode = nodeById.get(edge.dst);
+          if (visibleNodeIds.has(edge.src) && (dstNode?.type !== "competitor" || allowedCompIds.has(edge.dst))) {
+            next.add(edge.dst);
+          }
+          if (visibleNodeIds.has(edge.dst) && (srcNode?.type !== "competitor" || allowedCompIds.has(edge.src))) {
+            next.add(edge.src);
+          }
+        }
+        visibleNodeIds = next;
       }
-      
-      nodes = nodes.filter(n => {
-        if (n.type === "competitor") return allowedCompIds.has(n.id);
-        return connectedNodeIds.has(n.id);
-      });
-      
-      const finalNodeIds = new Set(nodes.map(n => n.id));
-      edges = compEdges.filter(e => finalNodeIds.has(e.src) && finalNodeIds.has(e.dst));
     }
+
+    let nodes = (data?.nodes ?? []).filter((n) => {
+      if (!enabledNodeIds.has(n.id) || !visibleNodeIds.has(n.id)) return false;
+      if (focusedCompetitors.size > 0 && n.type === "competitor") {
+        return focusedCompetitors.has(n.id);
+      }
+      return true;
+    });
+    const finalNodeIds = new Set(nodes.map(n => n.id));
+    edges = edges.filter(e => finalNodeIds.has(e.src) && finalNodeIds.has(e.dst));
 
     return { nodes, edges };
   }, [cutoff, data?.edges, data?.nodes, enabledTypes, focusedCompetitors]);
@@ -181,22 +213,17 @@ export function MarketAtlas() {
             <input type="range" min={7} max={90} step={1} value={days} onChange={(e) => setDays(Number(e.target.value))} className="w-full accent-navy" />
             <div className="mt-4 flex flex-wrap gap-2">
               {(["competitor", "initiative", "signal", "recommendation", "capability"] as NodeTypeFilter[]).map((t) => {
-                let dotColor = "bg-ink-3";
-                if (t === "competitor") dotColor = "bg-navy";
-                if (t === "initiative") dotColor = "bg-ai";
-                if (t === "capability") dotColor = "bg-amber";
-                if (t === "recommendation") dotColor = "bg-teal";
-                if (t === "signal") dotColor = "bg-navy-2";
+                const style = NODE_TYPE_STYLES[t];
                 
                 return (
                   <button
                     key={t}
                     onClick={() => setEnabledTypes((prev) => ({ ...prev, [t]: !prev[t] }))}
                     className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider transition ${
-                      enabledTypes[t] ? "bg-ai-active text-ai-active-text ring-1 ring-ai/30" : "bg-surface-2 text-ink-3 hover:bg-border"
+                      enabledTypes[t] ? style.active : "bg-surface-2 text-ink-3 ring-1 ring-border/50 hover:bg-border"
                     }`}
                   >
-                    <span className={`h-2 w-2 rounded-full ${dotColor}`} />
+                    <span className={`h-2 w-2 rounded-full ${style.dot}`} />
                     {t}
                   </button>
                 );
