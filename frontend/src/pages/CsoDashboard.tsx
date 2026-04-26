@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card } from "../components/Card";
 import { ExposureRow } from "../components/ExposureRow";
@@ -8,9 +9,14 @@ import { api } from "../lib/api";
 import { useAccount } from "../lib/accounts";
 import { Sparkles } from "lucide-react";
 
+const REPORT_URL =
+  "https://docs.google.com/document/d/1QlixeyIo97ItLPU-UD6XC_qe1t-Jv_Y4QI0hlPzDZic/edit?usp=sharing";
+
 export function CsoDashboard() {
   const { account } = useAccount();
   const queryClient = useQueryClient();
+  // Accept hides cards only for this page load. Refresh shows pending recommendations again (no server accept).
+  const [acceptDismissedIds, setAcceptDismissedIds] = useState<Set<string>>(() => new Set());
   const competitors = useQuery({ queryKey: ["competitors"], queryFn: api.competitors });
   const initiatives = useQuery({ queryKey: ["initiatives"], queryFn: api.initiatives });
   const signals = useQuery({ queryKey: ["signals"], queryFn: () => api.signals({ days: 90 }) });
@@ -44,6 +50,10 @@ export function CsoDashboard() {
 
   const topInitiatives = [...(initiatives.data ?? [])].sort((a, b) => b.current_risk_score - a.current_risk_score).slice(0, 5);
   const top = topInitiatives[0];
+
+  const pending = recommendations.data ?? [];
+  const visibleRecs = pending.filter((r) => !acceptDismissedIds.has(r.id));
+  const allSnoozedByAccept = pending.length > 0 && visibleRecs.length === 0;
 
   return (
     <div className="space-y-6">
@@ -84,20 +94,30 @@ export function CsoDashboard() {
           </div>
           <div className="text-xs text-ink-2 mb-4">Pending recommendations generated from score deltas.</div>
           <div className="grid gap-4">
-            {(recommendations.data ?? []).map((r) => (
+            {visibleRecs.map((r) => (
               <RecommendationCard 
                 key={r.id} 
                 recommendation={r} 
-                onAccept={(id) => actionMutation.mutate({ id, action: "accept" })}
+                onAccept={(id) => setAcceptDismissedIds((prev) => new Set([...prev, id]))}
                 onDefer={(id) => actionMutation.mutate({ id, action: "defer" })}
                 actionsDisabled={actionMutation.isPending}
               />
             ))}
-            {(recommendations.data ?? []).length === 0 ? <div className="text-sm text-ink-2">No recommendations yet.</div> : null}
+            {pending.length === 0 ? <div className="text-sm text-ink-2">No recommendations yet.</div> : null}
+            {allSnoozedByAccept ? (
+              <div className="text-sm text-ink-2">
+                You’ve snoozed these recommendations for this visit. Refresh the page to see them again.
+              </div>
+            ) : null}
           </div>
-          <button className="mt-5 w-full rounded-xl bg-gradient-to-r from-navy to-ai px-4 py-2.5 text-sm font-semibold text-white shadow-depth transition-all hover:shadow-glass-hover hover:brightness-110">
+          <a
+            href={REPORT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 block w-full rounded-xl bg-gradient-to-r from-navy to-ai px-4 py-2.5 text-center text-sm font-semibold text-white shadow-depth transition-all hover:shadow-glass-hover hover:brightness-110"
+          >
             Generate report
-          </button>
+          </a>
         </Card>
       </div>
     </div>
