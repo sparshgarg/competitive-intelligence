@@ -4,6 +4,7 @@ backend/.venv/
 
 # Build outputs
 frontend/dist/
+backend/static/
 
 # Database
 backend/*.db

@@ -1,11 +1,14 @@
-"""FastAPI app entry. Phase 1: health + summary only. Routers mount in Phase 2."""
+"""FastAPI app entry. Serves API routes and the built frontend as a single service."""
 from __future__ import annotations
 
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 from api.competitors import router as competitors_router
 from api.initiatives import router as initiatives_router
@@ -23,7 +26,7 @@ app = FastAPI(title="Competitive Intelligence", version="0.1.0")
 
 cors_origins = [o.strip() for o in os.environ.get("CORS_ORIGINS", "").split(",") if o.strip()]
 if not cors_origins:
-    cors_origins = ["http://localhost:5173"]
+    cors_origins = ["http://localhost:5173", "http://localhost:5175"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -82,3 +85,19 @@ def generate_report() -> dict:
             "- Priority: accelerate Euro 7 + fleet CO₂ compliance execution; validate cost-down levers and exposure.\n"
         )
     }
+
+
+# ---------- Serve frontend static files in production ----------
+STATIC_DIR = Path(__file__).resolve().parent / "static"
+
+if STATIC_DIR.is_dir():
+    app.mount("/assets", StaticFiles(directory=str(STATIC_DIR / "assets")), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def spa_fallback(full_path: str):
+        """Serve index.html for any non-API route (SPA client-side routing)."""
+        file_path = STATIC_DIR / full_path
+        if file_path.is_file():
+            return FileResponse(str(file_path))
+        return FileResponse(str(STATIC_DIR / "index.html"))
+
