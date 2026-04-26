@@ -5,7 +5,7 @@ import hashlib
 import json
 from typing import Any
 
-from thefuzz import fuzz
+from difflib import SequenceMatcher
 
 from ai_client import ai_cache_namespace, ai_chat, ai_enabled
 from graph_store import GraphStore
@@ -33,7 +33,7 @@ def _resolve(value: str, entity_type: EntityType, index: list[tuple[str, str, st
     for node_id, name, t in index:
         if t != want_type:
             continue
-        score = fuzz.ratio(target, name.lower())
+        score = int(SequenceMatcher(None, target, name.lower()).ratio() * 100)
         if score > best[0]:
             best = (score, node_id)
     return best[1] if best[0] >= 85 else None
