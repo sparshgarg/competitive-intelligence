@@ -106,7 +106,7 @@ export function Landing() {
             </div>
             <span className="text-sm font-bold text-[#111827]">Competitive OS</span>
             <span className="ml-1 rounded-full bg-[#F5F3FF] px-2 py-0.5 text-[10px] font-semibold text-[#7C3AED]">
-              Demo · Škoda Auto
+              Demo
             </span>
           </div>
           <button
@@ -135,23 +135,21 @@ export function Landing() {
           {/* Context pill */}
           <div className="inline-flex items-center gap-2 rounded-full border border-[#BFDBFE] bg-white px-3 py-1 text-xs text-[#1E40AF] shadow-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-[#0D9488] animate-pulse" />
-            Live demo · Škoda Auto competitive intelligence
+            Live demo · Works for any industry · Škoda Auto example
           </div>
 
           <h1 className="mt-5 text-[48px] font-extrabold leading-[1.1] tracking-tight text-[#111827]">
-            AI-powered competitive <br />
+            Turn market signals into <br />
             <span className="bg-gradient-to-r from-[#1E3A8A] to-[#7C3AED] bg-clip-text text-transparent">
-              intelligence for automakers
+              strategic decisions
             </span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-[620px] text-lg leading-7 text-[#4B5563]">
-            Competitive OS monitors market signals across{" "}
-            <strong className="text-[#111827]">7 rivals</strong>, connects them
-            to <strong className="text-[#111827]">5 strategic initiatives</strong>{" "}
-            via a knowledge graph, and surfaces{" "}
+            Competitive OS ingests signals from any industry, connects them to your
+            strategic portfolio via a knowledge graph, and surfaces{" "}
             <strong className="text-[#111827]">executive-grade recommendations</strong>{" "}
-            — each with a full evidence trail.
+            — each backed by a full, auditable evidence trail.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -196,7 +194,7 @@ export function Landing() {
         </div>
       </section>
 
-      {/* ── Context: who is Skoda ── */}
+      {/* ── Context: demo example ── */}
       <section className="mx-auto max-w-[900px] px-6 py-14">
         <div className="rounded-2xl border border-[#BFDBFE] bg-gradient-to-br from-[#EFF6FF] to-[#F5F3FF] p-8">
           <div className="flex items-start gap-4">
@@ -204,14 +202,15 @@ export function Landing() {
               🚗
             </div>
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-[#1E40AF]">Demo context</div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-[#1E40AF]">Demo loaded with a real-world example</div>
               <h2 className="mt-1 text-xl font-bold text-[#111827]">Škoda Auto — Volkswagen Group</h2>
               <p className="mt-2 max-w-[620px] text-sm leading-6 text-[#4B5563]">
-                Škoda is a Czech automaker and one of VW Group's fastest-growing value brands, with{" "}
-                <strong>~880,000 units/year</strong> and expansion into EV platforms. This demo models
-                Škoda's competitive strategy team monitoring <strong>Tesla, BYD, Hyundai/Kia, Dacia,
-                MG Motor, and Renault</strong> as they navigate the EV transition, Euro 7 emissions
-                legislation, and software-defined vehicle investment.
+                This demo is seeded with Škoda's competitive landscape — navigating the EV transition,
+                Euro 7 emissions legislation, and software-defined vehicle investment against rivals
+                including Tesla and BYD. It illustrates how Competitive OS works for{" "}
+                <strong>any company</strong> managing a portfolio of strategic initiatives against an
+                active competitive field. The same system applies equally to SaaS, pharma, fintech,
+                retail, or any industry where competitive signals drive portfolio risk.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {COMPETITORS.map((c) => (
@@ -224,6 +223,9 @@ export function Landing() {
                   </span>
                 ))}
               </div>
+              <p className="mt-3 text-[11px] text-[#9CA3AF]">
+                Competitors tracked in this example · any rival set can be substituted for your industry
+              </p>
             </div>
           </div>
         </div>
@@ -343,8 +345,9 @@ export function Landing() {
           </div>
           <h2 className="mt-4 text-2xl font-bold text-white">Ready to explore?</h2>
           <p className="mt-2 text-sm leading-6 text-white/70">
-            The live dashboard is running with real graph data, AI recommendations,
-            and full traceability from raw signals to portfolio risk scores.
+            The live dashboard is running with graph data, AI-generated recommendations,
+            and full traceability from raw market signals to portfolio risk scores —
+            using Škoda Auto as the demo scenario.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <button
