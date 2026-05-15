@@ -1,15 +1,15 @@
-import { Bot, Gauge, Compass, Radio, Settings, Target, Trophy } from "lucide-react";
+import { Bot, Gauge, Compass, Radio, Target, Trophy, Plug, Zap } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import tempoLogo from "../assets/tempo-logo.png";
 import { ACCOUNTS, useAccount } from "../lib/accounts";
 
 const items = [
-  { label: "Dashboard", href: "/", icon: Gauge },
+  { label: "Dashboard", href: "/dashboard", icon: Gauge },
   { label: "Market Atlas", href: "/network", icon: Compass },
   { label: "Initiatives", href: "/initiatives", icon: Target },
   { label: "Competitors", href: "/competitors", icon: Trophy },
   { label: "Signals", href: "/signals", icon: Radio },
   { label: "Recommendations", href: "/reasoning", icon: Bot },
+  { label: "Integrations", href: "/integrations", icon: Plug },
 ];
 
 export function Sidebar() {
@@ -18,9 +18,11 @@ export function Sidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-30 flex w-[220px] flex-col border-r border-border bg-sidebar-bg">
       <div className="flex h-14 items-center gap-3 px-4">
-        <img src={tempoLogo} alt="Tempo" className="h-8 w-8 shrink-0 rounded bg-surface object-contain ring-1 ring-border" />
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-navy to-ai ring-1 ring-navy/20">
+          <Zap className="h-4 w-4 text-white" />
+        </div>
         <span className="overflow-hidden whitespace-nowrap text-sm font-semibold text-ink">
-          Tempo CI
+          Competitive OS
         </span>
       </div>
 
@@ -29,7 +31,7 @@ export function Sidebar() {
           <NavLink
             key={item.href}
             to={item.href}
-            end={item.href === "/"}
+            end={item.href === "/dashboard"}
             className={({ isActive }) =>
               `flex h-10 items-center gap-3 rounded px-3 text-sm transition ${
                 isActive ? "bg-ai-active text-ai-active-text" : "text-ink-2 hover:bg-surface-2 hover:text-ink"

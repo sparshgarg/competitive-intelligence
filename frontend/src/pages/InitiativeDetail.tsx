@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { Card } from "../components/Card";
+import { JiraPanel } from "../components/JiraPanel";
 import { RiskScoreBand } from "../components/RiskScoreBand";
 import { SourcePill } from "../components/SourcePill";
 import { SubgraphViewer } from "../components/SubgraphViewer";
@@ -66,6 +67,14 @@ export function InitiativeDetail() {
           )}
         </Card>
       </div>
+
+      {/* Jira integration panel */}
+      <Card
+        title="Jira"
+        subtitle="Linked epic and active sprint status pulled from competitive-os.atlassian.net"
+      >
+        <JiraPanel initiativeId={i.id} initiativeName={i.name} />
+      </Card>
     </div>
   );
 }

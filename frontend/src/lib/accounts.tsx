@@ -19,7 +19,7 @@ type AccountContextValue = {
 };
 
 const AccountContext = createContext<AccountContextValue | null>(null);
-const STORAGE_KEY = "tempo_ci_active_account";
+const STORAGE_KEY = "competitive_os_active_account";
 
 export function AccountProvider({ children }: { children: React.ReactNode }) {
   const [accountId, setAccountId] = useState<AccountId>("cso_sarah");
@@ -27,7 +27,7 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY) as AccountId | null;
-      if (stored === "cso_sarah") setAccountId(stored);
+      if (stored && (stored === "cso_sarah")) setAccountId(stored);
     } catch {
       // ignore
     }
