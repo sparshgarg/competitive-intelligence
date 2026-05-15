@@ -64,7 +64,7 @@ export function CsoDashboard() {
       </div>
 
       {/* Risk Score Band */}
-      {top ? <div className="animate-slide-up [animation-delay:150ms]"><RiskScoreBand title={top.name} current={top.current_risk_score} prior={top.prior_risk_score} history={top.score_history} /></div> : null}
+      {top ? <div className="animate-slide-up [animation-delay:150ms]"><RiskScoreBand title={top.name} current={top.current_risk_score} prior={top.prior_risk_score} history={top.score_history} rationale={top.risk_rationale} /></div> : null}
 
       {/* Momentum Map */}
       <div className="animate-slide-up [animation-delay:300ms]">
