@@ -35,7 +35,6 @@ from models import (
     ScoreHistoryPoint,
     Signal,
 )
-from scoring import bulk_recompute
 from synthesis.recommendations import generate_recommendation
 
 DATA = Path(__file__).parent / "data"
@@ -343,14 +342,17 @@ def main() -> None:
     counts = load_all(store)
     threatens = derive_threatens(store)
     impacts = derive_impacts(store)
-    recompute = bulk_recompute(store)
+    # NOTE: We intentionally skip bulk_recompute() here.
+    # The seed JSON contains hand-authored current_risk_score values that are
+    # calibrated for demo clarity (high-risk items should read 7–9, not 4–6).
+    # bulk_recompute() uses graph path weights from a small demo dataset and
+    # produces lower computed values that override the authored scores.
+    # Live scoring via /api/initiatives still works normally after startup.
     extra = ensure_pending_recommendations(store, minimum=3)
     store.snapshot()
 
     print(f"Loaded: {counts}")
     print(f"Derived edges: THREATENS={threatens}  IMPACTS={impacts}")
-    if recompute.get("recommendations_generated"):
-        print(f"Generated recommendations: {recompute['recommendations_generated']}")
     if extra:
         print(f"Ensured additional recommendations: {extra}")
     print_summary(store)
